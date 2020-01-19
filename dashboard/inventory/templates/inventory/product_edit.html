@@ -1,0 +1,23 @@
+{% extends 'inventory/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<section>
+    <div class="container-fluid">
+        <div class="row mb-5 mt-5">
+            <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+                <div class="row align-items-center">
+                    <div class="col-xl-6 col-12 mb-4 mb-xl-0">
+                        <h3 class="text-muted text-center mb-3"><b>Edit Product</b></h3>
+                        <form method="POST" class="post-form">{% csrf_token %}
+                            {{ form|crispy}}
+                            <a href="product_remove" class="btn btn-danger">Remove</a>
+                            <button type="submit" class="save btn btn-dark">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

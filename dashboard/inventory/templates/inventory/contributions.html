@@ -1,0 +1,47 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+<section>
+  <div class="container-fluid">
+    <div class="row mb-5 mt-5">
+      <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+        <div class="row">
+          <div class="col-xl-6 col-12 mb-4 mb-xl-0">
+            <div class="card text-white bg-success mb-3"
+              style="max-width: 18rem; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); text-align: center; margin: 0 auto;">
+              <div class="card-header" style="background-color: white; color: green;">
+                <h5>Your Total Contributions</h5>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title" style="font-weight: bold;">${{total_contribution.amount__sum}}</h1>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-6 col-12">
+            <h3 class="text-muted text-center mb-3">Recent Contributions</h3>
+            <table class="table table-dark table-hover text-center">
+              <thead>
+                <tr class="text-muted">
+                  <th>Year</th>
+                  <th>Month</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for contribution in contributions%}
+
+                <tr>
+                  <th>{{contribution.year}}</th>
+                  <td>{{contribution.month}}</td>
+                  <td>${{contribution.amount}}</td>
+                  <td><span class="badge badge-warning py-2">Pending</span></td>
+                </tr>
+                {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

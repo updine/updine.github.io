@@ -1,0 +1,94 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+<!--Tables-->
+<section>
+    <div class="container-fluid">
+        <div class="row mb-5 mt-5">
+            <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+                <div class="row">
+                    <div class="col-xl-6 col-12 mb-4 mb-xl-0">
+                        <h3 class="text-muted text-center mb-3">Inventory</h3>
+                        <table class="table bg-light table-striped text-center">
+                            <thead>
+                                <tr class="text-muted">
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Available</th>
+                                    <th>Sold</th>
+                                    <th><a href="{% url 'product_new' %}" class="btn btn-secondary btn-sm"><i
+                                                class="fas fa-plus text-light fa-lg"></i></a>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for product in products %}
+                                <tr>
+                                    <td>{{product.name}}</td>
+                                    <td>${{product.price}}</td>
+                                    <td>{{product.availability}}</td>
+                                    <td>{{product.sales_count}}</td>
+                                    <td style="text-align: center;">
+                                        <div class="btn-group">
+                                            <a href="{% url 'product_edit' pk=product.pk %}"
+                                                class="btn btn-info btn-sm"><i
+                                                    class="fas fa-edit text-light fa-lg"></i></a>
+                                            <a href="{% url 'product_remove' pk=product.pk %}"
+                                                class="btn btn-danger btn-sm" data-toggle="modal"
+                                                data-target="#confirm-delete"><i
+                                                    class="fas fa-trash text-light fa-lg"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!--confirm delete modal-->
+                                <div class="modal fade" id="confirm-delete">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Confirm deletion!</h4>
+                                                <button type="button" class="close"
+                                                    data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                This action is permanent.
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a class="btn btn-success text-light" data-dismiss="modal">Cancel</a>
+                                                <a href="{% url 'product_remove' pk=product.pk %}"
+                                                    class="btn btn-danger text-light">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end of confirm delete modal-->
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-xl-6 col-12">
+                        <div class="card text-light bg-dark rounded">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <i class="fas fa-arrow-up fa-7x text-success"></i>
+                                    <div class="text-right text-light">
+                                        <h4 class="text-success"><b>Popular Items</b></h4>
+                                        {% for hit in hits%}
+                                        <h5>{{hit.name}}</h5>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer border-success text-secondary">
+                                <i class="fas fa-sync mr-3"></i>
+                                <span>Updated Now</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<!--End of Tables-->
+{% endblock %}

@@ -35,7 +35,11 @@
                   <th>{{contribution.year}}</th>
                   <td>{{contribution.month}}</td>
                   <td>${{contribution.amount}}</td>
+                  {% if contribution.status == True %}
+                  <td><span class="badge badge-success py-2">Success</span></td>
+                  {% else %}
                   <td><span class="badge badge-warning py-2">Pending</span></td>
+                  {% endif %}
                 </tr>
                 {% endfor %}
           </div>

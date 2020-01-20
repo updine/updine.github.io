@@ -5,7 +5,23 @@ from django.shortcuts import get_object_or_404
 from django.db.models import Sum
 
 def home(request):
-    return render(request, 'inventory/home.html', {})
+    hits = (Product.objects.order_by('sales_count')).reverse()[0:3]
+    total_contribution = Contribution.objects.aggregate(Sum('amount'))
+    total_sales = Transaction.objects.aggregate(Sum('amount'))
+    user_count = Transaction.objects.count()
+    contributions = Contribution.objects.all()
+    transactions = (Transaction.objects.order_by('timestamp')).reverse()
+
+    dict = {
+        'hits': hits,
+        'total_contribution': total_contribution,
+        'total_sales': total_sales,
+        'user_count' : user_count,
+        'contributions': contributions,
+        'transactions': transactions,
+
+    }
+    return render(request, 'inventory/home.html', dict)
 
 def inventory_view(request):
     products = Product.objects.filter()
@@ -64,4 +80,5 @@ def presence(request):
 def sales(request):
     transactions = Transaction.objects.order_by('timestamp')
     transactions = transactions.reverse()
-    return render(request, 'inventory/sales.html', {'transactions': transactions})
+    total_sales = Transaction.objects.aggregate(Sum('amount'))
+    return render(request, 'inventory/sales.html', {'transactions': transactions, 'total_sales': total_sales})

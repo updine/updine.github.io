@@ -1,4 +1,5 @@
 {% extends 'inventory/base.html' %}
+{% load humanize %}
 
 {% block content %}
 <section>
@@ -13,7 +14,7 @@
                 <h5>Your Total Contributions</h5>
               </div>
               <div class="card-body">
-                <h1 class="card-title" style="font-weight: bold;">${{total_contribution.amount__sum}}</h1>
+                <h1 class="card-title" style="font-weight: bold;">${{total_contribution.amount__sum|floatformat:2|intcomma}}</h1>
               </div>
             </div>
           </div>
@@ -34,9 +35,9 @@
                 <tr>
                   <th>{{contribution.year}}</th>
                   <td>{{contribution.month}}</td>
-                  <td>${{contribution.amount}}</td>
+                  <td>${{contribution.amount|intcomma}}</td>
                   {% if contribution.status == True %}
-                  <td><span class="badge badge-success py-2">Success</span></td>
+                  <td><span class="badge badge-success py-2">Approved</span></td>
                   {% else %}
                   <td><span class="badge badge-warning py-2">Pending</span></td>
                   {% endif %}

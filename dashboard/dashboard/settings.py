@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'inventory',
     'crispy_forms',
     'phonenumber_field',
+    'django.contrib.humanize'
 
 ]
 

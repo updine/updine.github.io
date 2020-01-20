@@ -1,5 +1,6 @@
 {% extends 'inventory/base.html' %}
 {% load crispy_forms_tags %}
+{% load humanize %}
 
 {% block content %}
 <section>
@@ -7,7 +8,7 @@
         <div class="row mb-5">
             <div class="col-xl-10 col-lg-9 col-md-8 ml-auto mt-5">
                 <div class="row align-items-center">
-                    <div class="col-xl-12 col-12">
+                    <div class="col-xl-12 col-12 text-right">
                         <h3 class="text-muted text-center mb-3">Transactions</h3>
                         <table class="table table-dark table-hover text-center">
                             <thead>
@@ -23,12 +24,17 @@
                                 <tr>
                                     <th>{{transaction.timestamp}}</th>
                                     <td>{{transaction.customer}}</td>
-                                    <td>${{transaction.amount}}</td>
+                                    <td>${{transaction.amount|intcomma}}</td>
+                                    {% if transaction.status == True %}
                                     <td><span class="badge badge-success py-2">Approved</span></td>
+                                    {% else %}
+                                    <td><span class="badge badge-warning py-2">Pending</span></td>
+                                    {% endif %}
                                 </tr>
                                 {% endfor %}
                             </tbody>
                         </table>
+                        <h2 class="text-primary mr-5">Total . . . ${{total_sales.amount__sum|floatformat:2|intcomma}}</h2>
                     </div>
                 </div>
             </div>

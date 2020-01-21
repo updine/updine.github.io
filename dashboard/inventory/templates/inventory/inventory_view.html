@@ -65,19 +65,36 @@
                         </table>
                     </div>
                     <div class="col-xl-6 col-12">
-                        <div class="card text-light bg-dark rounded">
+                        <div class="card text-light bg-dark rounded mb-5">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
                                     <i class="fas fa-arrow-up fa-7x text-success"></i>
                                     <div class="text-right text-light">
                                         <h4 class="text-success"><b>Popular Items</b></h4>
-                                        {% for hit in hits%}
+                                        {% for hit in hits_down%}
                                         <h5>{{hit.name}}</h5>
                                         {% endfor %}
                                     </div>
                                 </div>
                             </div>
                             <div class="card-footer border-success text-secondary">
+                                <i class="fas fa-sync mr-3"></i>
+                                <span>Updated Now</span>
+                            </div>
+                        </div>
+                        <div class="card text-light bg-dark rounded">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <i class="fas fa-arrow-down fa-7x text-danger"></i>
+                                    <div class="text-right text-light">
+                                        <h4 class="text-danger"><b>Unpopular Items</b></h4>
+                                        {% for hit in hits_up%}
+                                        <h5>{{hit.name}}</h5>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer border-danger text-secondary">
                                 <i class="fas fa-sync mr-3"></i>
                                 <span>Updated Now</span>
                             </div>

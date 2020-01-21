@@ -25,9 +25,10 @@ def home(request):
 
 def inventory_view(request):
     products = Product.objects.filter()
-    hits = Product.objects.order_by('sales_count')
-    hits = hits.reverse()[0:3]
-    return render(request, 'inventory/inventory_view.html', {'products': products,'hits': hits})
+    hits_up = Product.objects.order_by('sales_count')[0:3]
+    hits_down_all = Product.objects.order_by('sales_count')
+    hits_down = hits_down_all.reverse()[0:3]
+    return render(request, 'inventory/inventory_view.html', {'products': products,'hits_up': hits_up, 'hits_down': hits_down})
 
 def inventory_top_hits_view(request):
     products = Product.objects.order_by('sales_count')

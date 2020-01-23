@@ -21,7 +21,7 @@ body{
     transition: all .4s;
 }
 .sidebar-link:hover{
-    background-color: #5AB9EA;
+    background-color: #626C66;
     border-radius: 5px;
 
 }
@@ -88,6 +88,7 @@ body{
 .card-common:hover {
     box-shadow: 2px 3px 15px #999;
     transform: translateY(-1px);
+    background-color: rgb(245, 242, 242);
 }
 /* end of cards */
 

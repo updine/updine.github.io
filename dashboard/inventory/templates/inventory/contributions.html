@@ -14,7 +14,22 @@
                 <h5>Your Total Contributions</h5>
               </div>
               <div class="card-body">
-                <h1 class="card-title" style="font-weight: bold;">${{total_contribution.amount__sum|floatformat:2|intcomma}}</h1>
+                <h1 class="card-title" style="font-weight: bold;">
+                  ${{total_contribution.amount__sum|floatformat:2|intcomma}}</h1>
+              </div>
+            </div>
+            <div class="card text-light bg-dark border-warning rounded mt-5"
+              style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-width: medium;">
+              <div class="card-body">
+                <div class="d-flex justify-content-between">
+                  <i class="fas fa-crown fa-7x text-warning"></i>
+                  <div class="text-right text-light">
+                    <h4 class="text-warning"><b>Your Best Months</b></h4>
+                    {% for x in top_months%}
+                    <h5>{{x.month}} {{x.year}} — ${{x.amount|intcomma}}</h5>
+                    {% endfor %}
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -6,26 +6,16 @@
         <div class="row mb-5 mt-5">
             <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
                 <div class="row">
-                    <div class="col-xl-6 col-12 mb-4 mb-xl-0 text-center">
+                    <div class="col-xl-9 col-12 mb-4 mb-xl-0 text-center">
                         <h5>Customer Hotspots</h5>
-                        <div id='map' style='width: 100%; height: 500px;'></div>
+                        <div style='width: 100%;'>{{map|safe}}</div>
                     </div>
                     <div class="col-xl-6 col-12 text-center">
-                        <h5>More Data</h5>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
-<script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoiaGFja2VybWFuNDI0MiIsImEiOiJjazVhM3U3emcxNjIwM3BwN2k4Y3RkdjViIn0.cEE590YoUysR7KJ-S21d5g';
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [-73.935242, 40.730610],
-        zoom: 10
-    });
-</script>
+
 {% endblock %}

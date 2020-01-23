@@ -9,72 +9,80 @@
             <div class="col-xl-10 col-md-8 col-lg-9 ml-auto">
                 <div class="row pt-md-5 mt-md- 3 mb-5">
                     <div class="col-xl-3 col-sm-6 p-2">
-                        <div class="card card-common">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <i class="fas fa-shopping-cart fa-3x text-warning"></i>
-                                    <div class="text-right text-secondary">
-                                        <h5>Sales</h5>
-                                        <h3>${{total_sales.amount__sum|floatformat:2|intcomma}}</h3>
+                        <a href="sales" style="text-decoration : none">
+                            <div class="card card-common">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <i class="fas fa-shopping-cart fa-3x text-warning"></i>
+                                        <div class="text-right text-secondary">
+                                            <h5>Sales</h5>
+                                            <h3>${{total_sales.amount__sum|floatformat:2|intcomma}}</h3>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="card-footer text-secondary">
+                                    <i class="fas fa-sync mr-3"></i>
+                                    <span>Updated Now</span>
+                                </div>
                             </div>
-                            <div class="card-footer text-secondary">
-                                <i class="fas fa-sync mr-3"></i>
-                                <span>Updated Now</span>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="col-xl-3  col-sm-6 p-2">
-                        <div class="card card-common">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <i class="fas fa-donate fa-3x text-success"></i>
-                                    <div class="text-right text-secondary">
-                                        <h5>Contributions</h5>
-                                        <h3>${{total_contribution.amount__sum|floatformat:2|intcomma}}</h3>
+                        <a href="contributions" style="text-decoration : none">
+                            <div class="card card-common">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <i class="fas fa-donate fa-3x text-success"></i>
+                                        <div class="text-right text-secondary">
+                                            <h5>Contributions</h5>
+                                            <h3>${{total_contribution.amount__sum|floatformat:2|intcomma}}</h3>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="card-footer text-secondary">
+                                    <i class="fas fa-sync mr-3"></i>
+                                    <span>Updated Now</span>
+                                </div>
                             </div>
-                            <div class="card-footer text-secondary">
-                                <i class="fas fa-sync mr-3"></i>
-                                <span>Updated Now</span>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="col-xl-3  col-sm-6 p-2">
-                        <div class="card card-common">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <i class="fas fa-users fa-3x text-info"></i>
-                                    <div class="text-right text-secondary">
-                                        <h5>Users</h5>
-                                        <h3>{{user_count}}</h3>
+                        <a href="customers" style="text-decoration : none">
+                            <div class="card card-common">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <i class="fas fa-users fa-3x text-info"></i>
+                                        <div class="text-right text-secondary">
+                                            <h5>Users</h5>
+                                            <h3>{{user_count}}</h3>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="card-footer text-secondary">
+                                    <i class="fas fa-sync mr-3"></i>
+                                    <span>Updated Now</span>
+                                </div>
                             </div>
-                            <div class="card-footer text-secondary">
-                                <i class="fas fa-sync mr-3"></i>
-                                <span>Updated Now</span>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="col-xl-3  col-sm-6 p-2">
-                        <div class="card card-common">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <i class="fas fa-chart-line fa-3x text-danger"></i>
-                                    <div class="text-right text-secondary">
-                                        <h5>Webscore</h5>
-                                        <h3><sup>90</sup>&frasl;<sub>100</sub></h3>
+                        <a href="presence" style="text-decoration : none">
+                            <div class="card card-common">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <i class="fas fa-chart-line fa-3x text-danger"></i>
+                                        <div class="text-right text-secondary">
+                                            <h5>Webscore</h5>
+                                            <h3><sup>90</sup>&frasl;<sub>100</sub></h3>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="card-footer text-secondary">
+                                    <i class="fas fa-sync mr-3"></i>
+                                    <span>Updated Now</span>
+                                </div>
                             </div>
-                            <div class="card-footer text-secondary">
-                                <i class="fas fa-sync mr-3"></i>
-                                <span>Updated Now</span>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -104,7 +112,7 @@
                                 <tbody>
                                     {% for transaction in transactions %}
                                     <tr>
-                                        <th>{{transaction.timestamp}}</th>
+                                        <th>{{transaction.timestamp|naturaltime}}</th>
                                         <td>{{transaction.customer}}</td>
                                         <td>${{transaction.amount|intcomma}}</td>
                                         {% if transaction.status == True %}
@@ -146,24 +154,8 @@
                             </tbody>
                         </table>
                     </div>
-                     <div class="col-xl-6 col-12">
-                        <div class="card text-light bg-dark rounded">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <i class="fas fa-arrow-up fa-7x text-success"></i>
-                                    <div class="text-right text-light">
-                                        <h4 class="text-success"><b>Popular Items</b></h4>
-                                        {% for hit in hits%}
-                                        <h5>{{hit.name}}</h5>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer border-success text-secondary">
-                                <i class="fas fa-sync mr-3"></i>
-                                <span>Updated Now</span>
-                            </div>
-                        </div>
+                    <div class="col-xl-6 col-12">
+
                     </div>
                 </div>
             </div>

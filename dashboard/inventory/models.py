@@ -17,8 +17,10 @@ class Business(models.Model):
 class Transaction(models.Model):
     timestamp = models.DateTimeField()
     customer = models.CharField(max_length=200)
-    amount = models.DecimalField(max_digits=4, decimal_places=2)
+    amount = models.DecimalField(max_digits=5, decimal_places=2)
     status = models.BooleanField()
+    lat = models.FloatField(null=True)
+    long = models.FloatField(null=True)
 
 class Contribution(models.Model):
     year = models.CharField(max_length=200)

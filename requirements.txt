@@ -10,7 +10,7 @@ folium==0.10.1
 idna==2.8
 Jinja2==2.10.3
 MarkupSafe==1.1.1
-numpy==1.18.1
+numpy==1.22.0
 phonenumbers==8.11.2
 Pillow==7.0.0
 pytz==2019.3
